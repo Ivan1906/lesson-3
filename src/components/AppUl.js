@@ -9,7 +9,7 @@ class AppUl extends Component {
             <div className="listPost">
                 {items.map((item, index) => {
                     return (
-                        <div key={item.id}>
+                        <div key={item.id} className="post">
                             <h5>{index + 1}. {item.title.toUpperCase()}</h5>
                             <p>{item.body.slice(0, 200)}</p>
                         </div>

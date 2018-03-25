@@ -10,29 +10,41 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      textButton: 'Добавити 10 записів',
+      textButton: 'Добавити 10 нових постів',
       allCount: DBpost.length,
-      count: 10, 
-      db: DBpost.slice(0, 10)
+      count: 10,
+      step: 33,
+      db: []
     };
     this.onClick = this.onClick.bind(this);
   }
 
+  componentDidMount() {
+    this.setState((prevState) => {
+      return {db: DBpost.slice(0, prevState.count)};
+    });
+  }
+
   onClick() {
-    const { allCount, count } = this.state
-    if (count <= allCount) {
-      console.log("before = " + count);
-      this.setState({count: count + 10});
-      console.log("after = " + count);
-      this.setState({db: DBpost.slice(0, count)});
-      console.log(this.state.db);
+    const { allCount, count, step } = this.state;
+    if (count < allCount) {
+      this.setState((prevState) => {
+        return prevState.count + step < allCount ? {count: prevState.count + step} : {count: allCount};
+      });
+      this.setState((prevState) => {
+        return {db: DBpost.slice(0, prevState.count)}
+      });
+    } else {
+      this.setState((prevState) => {
+        return {textButton: ""}
+      });
     }
   }
 
   render() {
     return (
       <div className="App">
-        <h1>{this.state.count}</h1>
+        <h1>Кількість записів {this.state.count}</h1>
         <AppUl items={this.state.db} />
         <AppButton text={this.state.textButton} onClick={this.onClick} />
       </div>

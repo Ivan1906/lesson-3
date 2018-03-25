@@ -6,6 +6,9 @@ class AppButton extends Component {
     constructor(props) {
         super(props);
         this.onClickChild = this.onClickChild.bind(this);
+        this.state = {
+            textButton: "Записів для добавлення не має"
+        }
     }
 
     onClickChild() {
@@ -17,7 +20,7 @@ class AppButton extends Component {
         return(
             <input type="button"
                 className="AppButton" 
-                value={text}
+                value={text ? text : this.state.textButton}
                 onClick={this.onClickChild} />
         )
     }
@@ -29,7 +32,7 @@ AppButton.protoTypes = {
 }
 
 AppButton.defaultProps = {
-    text: "Записів для добавлення не має"
+    text: "Добавити 10 записів"
 }
 
 export default AppButton;
