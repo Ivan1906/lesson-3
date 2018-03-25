@@ -10,7 +10,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      textButton: 'Добавити 10 нових постів',
+      textButton: '',
       allCount: DBpost.length,
       count: 10,
       step: 33,
@@ -22,6 +22,9 @@ class App extends Component {
   componentDidMount() {
     this.setState((prevState) => {
       return {db: DBpost.slice(0, prevState.count)};
+    });
+    this.setState((prevState) => {
+      return {textButton: `Добавити ${prevState.step} нових постів`}
     });
   }
 
