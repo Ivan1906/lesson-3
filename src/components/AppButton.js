@@ -13,14 +13,12 @@ class AppButton extends Component {
     }
 
     render() {
-        console.log(this.props);
-        console.log(this.refs);
         const { text } = this.props;
         return(
-            <button 
+            <input type="button"
                 className="AppButton" 
-                onClick={this.onClickChild}>{text}
-            </button>
+                value={text}
+                onClick={this.onClickChild} />
         )
     }
 }
@@ -31,7 +29,7 @@ AppButton.protoTypes = {
 }
 
 AppButton.defaultProps = {
-    text: "10 записів"
+    text: "Записів для добавлення не має"
 }
 
 export default AppButton;

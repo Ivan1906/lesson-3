@@ -34,7 +34,7 @@ class App extends Component {
       <div className="App">
         <h1>{this.state.count}</h1>
         <AppUl items={this.state.db} />
-        <AppButton onClick={this.onClick} />
+        <AppButton text={this.state.textButton} onClick={this.onClick} />
       </div>
     );
   }

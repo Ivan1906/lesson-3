@@ -4,14 +4,18 @@ import './AppUl.css';
 
 class AppUl extends Component {
     render() {
+        const { items } = this.props;
         return (
-            <ul>
-                {this.props.items.map(item => 
-                    <li key={item.id}>
-                        {item.body}
-                    </li>)
-                }
-            </ul>
+            <div className="listPost">
+                {items.map((item, index) => {
+                    return (
+                        <div key={item.id}>
+                            <h5>{index + 1}. {item.title.toUpperCase()}</h5>
+                            <p>{item.body.slice(0, 200)}</p>
+                        </div>
+                    )
+                })}
+            </div>
         )
     }
 }
