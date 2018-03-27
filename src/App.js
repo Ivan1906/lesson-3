@@ -13,7 +13,7 @@ class App extends Component {
       textButton: '',
       allCount: DBpost.length,
       count: 10,
-      step: 33,
+      step: 10,
       db: []
     };
     this.onClick = this.onClick.bind(this);

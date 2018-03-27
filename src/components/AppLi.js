@@ -4,13 +4,26 @@ import './AppLi.css';
 
 class AppLi extends Component {
     render() {
+        const { item: { title, body }, index } = this.props;
         return(
-            <div className="listPost">
-                <div key={item.id} className="post">
-                    <h5>{index + 1}. {item.title.toUpperCase()}</h5>
-                    <p>{item.body.slice(0, 200)}</p>
-                </div>
+            <div className="post">
+                <h5>{index + 1}. {title.toUpperCase()}</h5>
+                <p>{body.slice(0, 200)}</p>
             </div>
         )
     }
 }
+
+AppLi.protoTypes = {
+    index: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired
+}
+
+AppLi.defaultProps = {
+    index: 0,
+    title: "Не має назви.",
+    body: "Не має опису."
+}
+
+export default AppLi;
